@@ -66,7 +66,7 @@ Clone the repository and run the following commands to build the template and cr
     );
     ```
 
-    > **Note**: The logs for debugging cache download and upload attempts will be available under `/tmp/e2b-metro-cache-logs`.
+    > **Note**: The logs for cache downloads and uploads will be available under `/tmp/e2b-metro-cache-logs`.
 
 5. When running the development server, you can use the following command to pull caches and run "expo start":
 
@@ -87,7 +87,7 @@ Clone the repository and run the following commands to build the template and cr
 
     > **Note**: Updated caches will only be uploaded once the development server process **exited**.
 
-    > Consider using a different cache file for the development server to avoid conflicts with the build cache. You can do so by setting the `CACHE_FILENAME` environment variable to a different value.
+    > **Note**: Consider using a different cache file for the development server to avoid conflicts with the build cache. You can do so by setting the `CACHE_FILENAME` environment variable to a different value.
 
 ## Stats
 
