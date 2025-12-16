@@ -33,6 +33,8 @@ Clone the repository and run the following commands to build the template and cr
 
     You can see all the variables supported by the script in the [`example.ts`](example.ts) file.
 
+    > **Note**: By default, the Sandboxes are located in the `us-west1` GCP region. Consider placing your cache bucket in the same region to avoid increased latency.
+
 3. Create a new sandbox
 
     ```ts
@@ -64,7 +66,7 @@ Clone the repository and run the following commands to build the template and cr
     );
     ```
 
-    The logs for debugging cache download and upload attempts will be available under `/tmp/e2b-metro-cache-logs`.
+    > **Note**: The logs for debugging cache download and upload attempts will be available under `/tmp/e2b-metro-cache-logs`.
 
 5. When running the development server, you can use the following command to pull caches and run "expo start":
 
@@ -83,7 +85,9 @@ Clone the repository and run the following commands to build the template and cr
     );
     ```
 
-    Keep in mind however, that the updated caches will only be uploaded once the development server process **exited**.
+    > **Note**: Updated caches will only be uploaded once the development server process **exited**.
+
+    > Consider using a different cache file for the development server to avoid conflicts with the build cache. You can do so by setting the `CACHE_FILENAME` environment variable to a different value.
 
 ## Stats
 
