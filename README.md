@@ -31,8 +31,7 @@ Clone the repository and run the following commands to build the template and cr
     AWS_BUCKET=""
     ```
 
-    > [!TIP]
-    > You can see all the variables supported by the script in the [`example.ts`](example.ts) file.
+    You can see all the variables supported by the script in the [`example.ts`](example.ts) file.
 
 3. Create a new sandbox
 
@@ -44,24 +43,24 @@ Clone the repository and run the following commands to build the template and cr
 
     ```ts
     const {
-    AWS_ACCESS_KEY_ID,
-    AWS_SECRET_ACCESS_KEY,
-    AWS_REGION,
-    AWS_ENDPOINT_URL,
-    AWS_BUCKET,
+      AWS_ACCESS_KEY_ID,
+      AWS_SECRET_ACCESS_KEY,
+      AWS_REGION,
+      AWS_ENDPOINT_URL,
+      AWS_BUCKET,
     } = process.env;
 
     const result = await sandbox.commands.run(
-    "scripts/cache-download.sh && npx expo export && scripts/cache-upload.sh",
-    {
+      "scripts/cache-download.sh && npx expo export && scripts/cache-upload.sh",
+      {
         envs: {
-        AWS_ACCESS_KEY_ID,
-        AWS_SECRET_ACCESS_KEY,
-        AWS_REGION,
-        AWS_ENDPOINT_URL,
-        AWS_BUCKET,
+          AWS_ACCESS_KEY_ID,
+          AWS_SECRET_ACCESS_KEY,
+          AWS_REGION,
+          AWS_ENDPOINT_URL,
+          AWS_BUCKET,
         },
-    }
+      }
     );
     ```
 
@@ -69,16 +68,16 @@ Clone the repository and run the following commands to build the template and cr
 
     ```ts
     const result = await sandbox.commands.run(
-    "scripts/cache-download.sh && npx expo start && scripts/cache-upload.sh",
-    {
+      "scripts/cache-download.sh && npx expo start && scripts/cache-upload.sh",
+      {
         envs: {
-        AWS_ACCESS_KEY_ID,
-        AWS_SECRET_ACCESS_KEY,
-        AWS_REGION,
-        AWS_ENDPOINT_URL,
-        AWS_BUCKET,
+          AWS_ACCESS_KEY_ID,
+          AWS_SECRET_ACCESS_KEY,
+          AWS_REGION,
+          AWS_ENDPOINT_URL,
+          AWS_BUCKET,
         },
-    }
+      }
     );
     ```
 
