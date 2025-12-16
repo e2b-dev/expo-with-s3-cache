@@ -33,7 +33,7 @@ Clone the repository and run the following commands to build the template and cr
 
     You can see all the variables supported by the script in the [`example.ts`](example.ts) file.
 
-    > **Note**: By default, the Sandboxes are located in the `us-west1` GCP region. Consider placing your cache bucket in the same region to avoid increased latency.
+    > **Note**: By default, the Sandboxes are located in the `us-west1` GCP region. Consider placing your cache bucket in the same region or close by to avoid increased latency.
 
 3. Create a new sandbox
 
