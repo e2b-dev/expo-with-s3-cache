@@ -64,6 +64,8 @@ Clone the repository and run the following commands to build the template and cr
     );
     ```
 
+    The logs for debugging cache download and upload attempts will be available under `/tmp/e2b-metro-cache-logs`.
+
 5. When running the development server, you can use the following command to pull caches and run "expo start":
 
     ```ts
