@@ -4,83 +4,85 @@ This is a template for building Expo apps with E2B and S3 build cache sync.
 
 ## Usage
 
-> **Note**: Full example code can be found in the `example.ts` file in the root of the project.
+> [!TIP]
+> Full example code can be found in the [`example.ts`](example.ts) file in the root of the project.
 
-Clone the repository and run the following commands:
+Clone the repository and run the following commands to build the template and create a new sandbox:
 
 1. Install dependencies
 
-```bash
-bun install
-```
+    ```bash
+    bun install
+    ```
 
 2. Build the template
 
-```bash
-bun build.ts
-```
+    ```bash
+    bun build.ts
+    ```
 
 3. Create .env file with the following variables
 
-```
-AWS_ACCESS_KEY_ID=""
-AWS_SECRET_ACCESS_KEY=""
-AWS_REGION=""
-AWS_ENDPOINT_URL=""
-AWS_BUCKET=""
-```
+    ```
+    AWS_ACCESS_KEY_ID=""
+    AWS_SECRET_ACCESS_KEY=""
+    AWS_REGION=""
+    AWS_ENDPOINT_URL=""
+    AWS_BUCKET=""
+    ```
 
-You can see all the variables supported by the script in the `.env.template` file in the root of the project.
+    > [!TIP]
+    > You can see all the variables supported by the script in the [`example.ts`](example.ts) file.
 
 3. Create a new sandbox
 
-```ts
-const sandbox = await Sandbox.create("expo-app");
-```
+    ```ts
+    const sandbox = await Sandbox.create("expo-app");
+    ```
 
 4. Pull the caches, run "expo export", and push the resulting caches back to S3:
 
-```ts
-const {
-  AWS_ACCESS_KEY_ID,
-  AWS_SECRET_ACCESS_KEY,
-  AWS_REGION,
-  AWS_ENDPOINT_URL,
-  AWS_BUCKET,
-} = process.env;
+    ```ts
+    const {
+    AWS_ACCESS_KEY_ID,
+    AWS_SECRET_ACCESS_KEY,
+    AWS_REGION,
+    AWS_ENDPOINT_URL,
+    AWS_BUCKET,
+    } = process.env;
 
-const result = await sandbox.commands.run(
-  "scripts/cache-download.sh && npx expo export && scripts/cache-upload.sh",
-  {
-    envs: {
-      AWS_ACCESS_KEY_ID,
-      AWS_SECRET_ACCESS_KEY,
-      AWS_REGION,
-      AWS_ENDPOINT_URL,
-      AWS_BUCKET,
-    },
-  }
-);
-```
+    const result = await sandbox.commands.run(
+    "scripts/cache-download.sh && npx expo export && scripts/cache-upload.sh",
+    {
+        envs: {
+        AWS_ACCESS_KEY_ID,
+        AWS_SECRET_ACCESS_KEY,
+        AWS_REGION,
+        AWS_ENDPOINT_URL,
+        AWS_BUCKET,
+        },
+    }
+    );
+    ```
 
 5. When running the development server, you can use the following command to pull caches and run "expo start":
 
-```ts
-const result = await sandbox.commands.run(
-  "scripts/cache-download.sh && npx expo start && scripts/cache-upload.sh",
-  {
-    envs: {
-      AWS_ACCESS_KEY_ID,
-      AWS_SECRET_ACCESS_KEY,
-      AWS_REGION,
-      AWS_ENDPOINT_URL,
-      AWS_BUCKET,
-    },
-  }
-);
-```
+    ```ts
+    const result = await sandbox.commands.run(
+    "scripts/cache-download.sh && npx expo start && scripts/cache-upload.sh",
+    {
+        envs: {
+        AWS_ACCESS_KEY_ID,
+        AWS_SECRET_ACCESS_KEY,
+        AWS_REGION,
+        AWS_ENDPOINT_URL,
+        AWS_BUCKET,
+        },
+    }
+    );
+    ```
 
-Keep in mind however, that the updated caches will only be uploaded once the development server process **exited**.
+    Keep in mind however, that the updated caches will only be uploaded once the development server process **exited**.
 
 ## Stats
 
